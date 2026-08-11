@@ -16,6 +16,13 @@ Built using GitHub Copilot and IDE Visual Studio Code, using [Expo](https://expo
 - **disable opening app on changes (manual user testing request)**: no need to auto run app as I will run tests manually
 - remove extra padding on top of the screen
 - remove "Classic Game" label and reduce top padding some more
+- remove index header and "X goes first" footer
+- can we hide the native navigation header?
+- remove the text "Choose a cell to make your move" and its subsection. Also move Dark toggle to be under the "Play mode" section. Rename to "Dark Mode"
+- right align the dark mode toggle and text
+- add some padding above toggle. Remove the "Play mode" header text
+- Make the bottom button more context aware. Rename it to "Reset board" or "New Game". Disable it befoe game round start
+- go thru index.tsx file and based on typescript coding standards and whats on expo docs, split the now big code file across multiple TypeScript files - .ts or .tsx modules, export functions, components, or types. Make dedicated files for logic, utils, UI components.
 
 ## Coding LLMs:
 
