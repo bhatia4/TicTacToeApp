@@ -134,11 +134,9 @@ export default function Index() {
       <StatusBar style={darkMode ? "light" : "dark"} />
       <View style={styles.container}>
         <View style={styles.header}>
-          <View>
-            <Text style={[styles.title, { color: colors.text }]}>
-              Tic Tac Toe
-            </Text>
-          </View>
+          <Text style={[styles.title, { color: colors.text }]}>
+            Tic Tac Toe
+          </Text>
           <View style={styles.themeControl}>
             <Text style={[styles.themeLabel, { color: colors.muted }]}>
               Dark
@@ -152,7 +150,6 @@ export default function Index() {
             />
           </View>
         </View>
-
         <View style={[styles.modePanel, { backgroundColor: colors.panel }]}>
           <Text style={[styles.sectionLabel, { color: colors.muted }]}>
             PLAY MODE
@@ -250,10 +247,6 @@ export default function Index() {
             Start / Restart
           </Text>
         </Pressable>
-
-        <Text style={[styles.footer, { color: colors.muted }]}>
-          X goes first
-        </Text>
       </View>
     </SafeAreaView>
   );
@@ -283,6 +276,8 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   themeControl: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
     gap: 4,
   },
@@ -294,7 +289,6 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: 520,
     borderRadius: 12,
-    marginTop: 28,
     padding: 14,
   },
   sectionLabel: {
@@ -365,10 +359,6 @@ const styles = StyleSheet.create({
   buttonPressed: {
     opacity: 0.8,
     transform: [{ scale: 0.98 }],
-  },
-  footer: {
-    fontSize: 12,
-    marginTop: 16,
   },
 });
 
