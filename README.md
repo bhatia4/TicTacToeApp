@@ -26,10 +26,13 @@ Built using GitHub Copilot and IDE Visual Studio Code, using [Expo](https://expo
 - go thru index.tsx file and based on typescript coding standards and whats on expo docs, split the now big code file across multiple TypeScript files - .ts or .tsx modules, export functions, components, or types. Make dedicated files for logic, utils, UI components.
 - Under dark mode toggle, add difficulty dropdown or segmented control (Easy, medium or Unbeatable) to give single players dynamic challenge progression. Hide this control in two player mode
 - move segmented control above dark mode toggle. Make its font size same as player mode segment control
+- make android app use icon.png as app icon
+- use @file:splash-icon.png as app start splash screen. ensure splash screen shown for 3 secs
 
 ## Coding LLMs:
 
 GPT-5.6 Luna <br/>
+Raptor mini
 
 ## Screenshot(s)
 
