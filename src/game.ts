@@ -1,6 +1,7 @@
 export type Player = "X" | "O";
 export type Cell = Player | null;
 export type Mode = "single" | "two";
+export type Difficulty = "easy" | "medium" | "unbeatable";
 export type GameResult = Player | "tie" | null;
 
 export const EMPTY_BOARD: Cell[] = Array(9).fill(null);
@@ -47,7 +48,41 @@ function minimax(board: Cell[], maximizing: boolean, depth: number): number {
   return maximizing ? Math.max(...scores) : Math.min(...scores);
 }
 
-export function findComputerMove(board: Cell[]): number {
+function findTacticalMove(board: Cell[], player: Player): number {
+  return board.findIndex((cell, index) => {
+    if (cell) return false;
+    const nextBoard = [...board];
+    nextBoard[index] = player;
+    return getWinner(nextBoard) === player;
+  });
+}
+
+function findRandomMove(board: Cell[]): number {
+  const openCells = board.reduce<number[]>((cells, cell, index) => {
+    if (!cell) cells.push(index);
+    return cells;
+  }, []);
+
+  if (openCells.length === 0) return -1;
+  return openCells[Math.floor(Math.random() * openCells.length)];
+}
+
+export function findComputerMove(
+  board: Cell[],
+  difficulty: Difficulty = "unbeatable",
+): number {
+  if (difficulty === "easy") return findRandomMove(board);
+
+  if (difficulty === "medium") {
+    const winningMove = findTacticalMove(board, "O");
+    if (winningMove >= 0) return winningMove;
+
+    const blockingMove = findTacticalMove(board, "X");
+    if (blockingMove >= 0) return blockingMove;
+
+    return findRandomMove(board);
+  }
+
   let bestScore = Number.NEGATIVE_INFINITY;
   let bestMove = board.findIndex((cell) => cell === null);
 

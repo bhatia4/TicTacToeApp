@@ -13,6 +13,7 @@ import {
     findComputerMove,
     getWinner,
     type Cell,
+    type Difficulty,
     type Mode,
 } from "@/game";
 import { darkColors, lightColors } from "@/theme";
@@ -21,6 +22,7 @@ export default function Index() {
   const { width } = useWindowDimensions();
   const [board, setBoard] = useState<Cell[]>(EMPTY_BOARD);
   const [mode, setMode] = useState<Mode>("single");
+  const [difficulty, setDifficulty] = useState<Difficulty>("unbeatable");
   const [xTurn, setXTurn] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -50,7 +52,7 @@ export default function Index() {
     }
 
     if (mode === "single") {
-      const computerMove = findComputerMove(nextBoard);
+      const computerMove = findComputerMove(nextBoard, difficulty);
       if (computerMove >= 0) {
         const computerBoard = [...nextBoard];
         computerBoard[computerMove] = "O";
@@ -80,8 +82,13 @@ export default function Index() {
         <GameControls
           colors={colors}
           darkMode={darkMode}
+          difficulty={difficulty}
           mode={mode}
           onDarkModeChange={setDarkMode}
+          onDifficultyChange={(nextDifficulty) => {
+            setDifficulty(nextDifficulty);
+            resetBoard();
+          }}
           onModeChange={resetBoard}
         />
         <GameStatus colors={colors} status={status} />

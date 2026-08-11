@@ -6,6 +6,7 @@ Built using GitHub Copilot and IDE Visual Studio Code, using [Expo](https://expo
 
 - **Ported from application built in JavaFX**: Logic and initial UI influence from [TicTacToe app repo code](https://github.com/bhatia4/TicTacToe/).
 - **Dynamic Theme Switching**: Click the checkbox to toggle between light and dark modes
+- **Difficulty levels to choose from**: Add difficulty (Easy, medium or Unbeatable) to give single players dynamic challenge progression
 - **Disabled web platform option in Expo project**: Modified configuration file app.json. Added platforms array with only "ios" and "android" (removed "web" from array)
 
 ## Prompts:
@@ -23,6 +24,8 @@ Built using GitHub Copilot and IDE Visual Studio Code, using [Expo](https://expo
 - add some padding above toggle. Remove the "Play mode" header text
 - Make the bottom button more context aware. Rename it to "Reset board" or "New Game". Disable it befoe game round start
 - go thru index.tsx file and based on typescript coding standards and whats on expo docs, split the now big code file across multiple TypeScript files - .ts or .tsx modules, export functions, components, or types. Make dedicated files for logic, utils, UI components.
+- Under dark mode toggle, add difficulty dropdown or segmented control (Easy, medium or Unbeatable) to give single players dynamic challenge progression. Hide this control in two player mode
+- move segmented control above dark mode toggle. Make its font size same as player mode segment control
 
 ## Coding LLMs:
 
