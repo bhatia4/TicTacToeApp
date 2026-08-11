@@ -22,7 +22,7 @@ export default function Index() {
   const { width } = useWindowDimensions();
   const [board, setBoard] = useState<Cell[]>(EMPTY_BOARD);
   const [mode, setMode] = useState<Mode>("single");
-  const [difficulty, setDifficulty] = useState<Difficulty>("unbeatable");
+  const [difficulty, setDifficulty] = useState<Difficulty>("medium");
   const [xTurn, setXTurn] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
 
