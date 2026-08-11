@@ -87,6 +87,8 @@ export default function Index() {
   const colors = darkMode ? darkColors : lightColors;
   const boardSize = Math.min(width - 40, 360);
   const cellSize = (boardSize - 32) / 3;
+  const hasMoves = board.some((cell) => cell !== null);
+  const actionLabel = result ? "New Game" : "Reset Board";
 
   const resetBoard = (nextMode = mode) => {
     setBoard([...EMPTY_BOARD]);
@@ -137,23 +139,8 @@ export default function Index() {
           <Text style={[styles.title, { color: colors.text }]}>
             Tic Tac Toe
           </Text>
-          <View style={styles.themeControl}>
-            <Text style={[styles.themeLabel, { color: colors.muted }]}>
-              Dark
-            </Text>
-            <Switch
-              accessibilityLabel="Toggle dark mode"
-              value={darkMode}
-              onValueChange={setDarkMode}
-              trackColor={{ false: colors.switchTrack, true: colors.accent }}
-              thumbColor={darkMode ? colors.background : colors.switchThumb}
-            />
-          </View>
         </View>
         <View style={[styles.modePanel, { backgroundColor: colors.panel }]}>
-          <Text style={[styles.sectionLabel, { color: colors.muted }]}>
-            PLAY MODE
-          </Text>
           <View
             style={[styles.modePicker, { backgroundColor: colors.background }]}
           >
@@ -182,13 +169,22 @@ export default function Index() {
               );
             })}
           </View>
+          <View style={styles.themeControl}>
+            <Text style={[styles.themeLabel, { color: colors.muted }]}>
+              Dark Mode
+            </Text>
+            <Switch
+              accessibilityLabel="Toggle dark mode"
+              value={darkMode}
+              onValueChange={setDarkMode}
+              trackColor={{ false: colors.switchTrack, true: colors.accent }}
+              thumbColor={darkMode ? colors.background : colors.switchThumb}
+            />
+          </View>
         </View>
 
         <View style={styles.statusBlock}>
           <Text style={[styles.status, { color: colors.text }]}>{status}</Text>
-          <Text style={[styles.statusHint, { color: colors.muted }]}>
-            Choose a cell to make your move
-          </Text>
         </View>
 
         <View
@@ -236,15 +232,18 @@ export default function Index() {
 
         <Pressable
           accessibilityRole="button"
+          accessibilityState={{ disabled: !hasMoves }}
+          disabled={!hasMoves}
           onPress={() => resetBoard()}
           style={({ pressed }) => [
             styles.restartButton,
             { backgroundColor: colors.accent },
+            !hasMoves && styles.disabledButton,
             pressed && styles.buttonPressed,
           ]}
         >
           <Text style={[styles.restartText, { color: colors.buttonText }]}>
-            Start / Restart
+            {actionLabel}
           </Text>
         </Pressable>
       </View>
@@ -277,9 +276,11 @@ const styles = StyleSheet.create({
   },
   themeControl: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     alignItems: "center",
     gap: 4,
+    width: "100%",
+    marginTop: 12,
   },
   themeLabel: {
     fontSize: 12,
@@ -290,12 +291,6 @@ const styles = StyleSheet.create({
     maxWidth: 520,
     borderRadius: 12,
     padding: 14,
-  },
-  sectionLabel: {
-    fontSize: 10,
-    fontWeight: "800",
-    letterSpacing: 1.5,
-    marginBottom: 9,
   },
   modePicker: {
     flexDirection: "row",
@@ -319,10 +314,6 @@ const styles = StyleSheet.create({
   status: {
     fontSize: 21,
     fontWeight: "800",
-  },
-  statusHint: {
-    fontSize: 13,
-    marginTop: 5,
   },
   board: {
     flexDirection: "row",
@@ -359,6 +350,9 @@ const styles = StyleSheet.create({
   buttonPressed: {
     opacity: 0.8,
     transform: [{ scale: 0.98 }],
+  },
+  disabledButton: {
+    opacity: 0.45,
   },
 });
 
