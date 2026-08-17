@@ -36,6 +36,10 @@ Raptor mini
 
 ## Screenshot(s)
 
+<img width="1206" height="2622" alt="TicTacToe app screenshot on iPhone 17 Pro" src="https://github.com/user-attachments/assets/3f076f7c-3dd2-4bf7-a747-644785925c60" />
+
+<img width="1206" height="2622" alt="TicTacToe app (dark mode) screenshot on iPhone 17 Pro" src="https://github.com/user-attachments/assets/98f6ec13-42ad-4bca-bacd-7d023d5a8dbf" />
+
 ## Build steps:
 
 **note**: using Expo 54.0.0 as Expo Go app on App store does nto support higher versions.
