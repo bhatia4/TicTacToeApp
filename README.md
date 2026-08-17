@@ -42,7 +42,7 @@ Raptor mini
 
 ## Build steps:
 
-**note**: using Expo 54.0.0 as Expo Go app on App store does nto support higher versions.
+**note**: using Expo 54.0.0 as Expo Go app on App store does not support higher versions.
 
 ```bash
 npm install
@@ -68,3 +68,11 @@ npm install
   ```bash
   expo run:ios
   ```
+
+## Links:
+
+- [YouTube - Create Your First React Native App with Expo & GitHub Copilot](https://www.youtube.com/watch?v=j-ZYc6NalZU)
+- [Expo Go is a learning environment and sandbox for getting started](https://expo.dev/go)
+- [ERROR Project is incompatible with this version of Expo Go #43699](https://github.com/expo/expo/issues/43699)
+- [Learn how to add a splash screen and app icon to your Expo project](https://docs.expo.dev/develop/user-interface/splash-screen-and-app-icon/)
+- [Android Studio Emulator - Expo Documentation](https://docs.expo.dev/workflow/android-studio-emulator/)
